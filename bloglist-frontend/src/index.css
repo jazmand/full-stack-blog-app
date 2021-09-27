@@ -1,0 +1,16 @@
+.message {
+	font-size: 20px;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+	color: black;
+}
+
+.message-fulfilled {
+	background: rgba(94, 202, 94, 0.705);
+}
+
+.message-error {
+	background: rgba(253, 68, 68, 0.678);
+}
