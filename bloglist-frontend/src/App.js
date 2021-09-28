@@ -14,12 +14,13 @@ import {
 } from '@material-ui/core';
 
 import {initBlogs, createBlog} from './reducers/blogReducer';
-import {loginUser} from './reducers/userReducer';
+import {loginUser, createUser} from './reducers/userReducer';
 
 import Blog from './components/Blog';
 import Notification from './components/Notification';
 import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
+import CreateUserForm from './components/CreateUserForm';
 import Togglable from './components/Togglable';
 import Users from './components/Users';
 import IndividualUser from './components/IndividualUser';
@@ -43,6 +44,10 @@ const App = () => {
 	const addBlog = (blogObject) => {
 		blogFormRef.current.toggleVisibility();
 		dispatch(createBlog(blogObject));
+	};
+
+	const addUser = (userObject) => {
+		dispatch(createUser(userObject));
 	};
 
 	const matchUserId = useRouteMatch('/users/:id');
@@ -93,6 +98,9 @@ const App = () => {
 					<Blog blog={currentBlog} />
 				</Route>
 				<Route path='/users'>{user === null ? <LoginForm /> : <Users />}</Route>
+				<Route path='/create-account'>
+					<CreateUserForm createUser={addUser} />
+				</Route>
 				<Route path='/'>
 					{user === null ? (
 						<div>

@@ -14,12 +14,18 @@ const Navigation = () => {
 		dispatch(userLogout());
 		history.push('/');
 	};
+	const handleCreateUser = () => {
+		history.push('/create-account');
+	};
+	const handleLogin = () => {
+		history.push('/login');
+	};
 
 	const useStyles = makeStyles((theme) => ({
 		title: {
 			flexGrow: 1,
 		},
-		logoutButton: {
+		rightButton: {
 			marginLeft: theme.spacing(2),
 		},
 		link: {
@@ -41,7 +47,7 @@ const Navigation = () => {
 					{user !== null ? (
 						<>
 							<Typography variant='h6' className={classes.title}>
-								<Link className={classes.link} to='/blogs'>
+								<Link className={classes.link} to='/'>
 									Blogs
 								</Link>
 								<Link className={classes.link} to='/users'>
@@ -54,14 +60,34 @@ const Navigation = () => {
 							<Button
 								variant='outlined'
 								color='secondary'
-								className={classes.logoutButton}
+								className={classes.rightButton}
 								onClick={handleLogout}
 							>
 								Logout
 							</Button>
 						</>
 					) : (
-						<Typography variant='h5'>Login</Typography>
+						<>
+							<Typography variant='h5' className={classes.title}>
+								Blog App
+							</Typography>
+							<Button
+								variant='outlined'
+								className={classes.rightButton}
+								color='secondary'
+								onClick={handleLogin}
+							>
+								Login
+							</Button>
+							<Button
+								variant='outlined'
+								className={classes.rightButton}
+								color='secondary'
+								onClick={handleCreateUser}
+							>
+								Create New Account
+							</Button>
+						</>
 					)}
 				</Toolbar>
 			</AppBar>

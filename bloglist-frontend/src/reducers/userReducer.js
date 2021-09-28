@@ -1,5 +1,6 @@
 import blogService from '../services/blogs';
 import loginService from '../services/login';
+import createUserService from '../services/createUser';
 import {setFulfilledMessage, setErrorMessage} from './notificationReducer';
 
 const userReducer = (state = null, action) => {
@@ -8,6 +9,9 @@ const userReducer = (state = null, action) => {
 			return action.data;
 		}
 		case 'LOGOUT_USER': {
+			return null;
+		}
+		case 'CREATE_USER': {
 			return null;
 		}
 		default: {
@@ -47,6 +51,27 @@ export const userLogin = (username, password) => {
 			dispatch(setFulfilledMessage(`${user.username} successfully logged in`));
 		} catch (exception) {
 			dispatch(setErrorMessage('Incorrect credentials'));
+		}
+	};
+};
+
+export const createUser = (userObject) => {
+	return async (dispatch) => {
+		try {
+			const newUser = await createUserService.createUser(userObject);
+			dispatch({
+				type: 'CREATE_USER',
+				data: newUser,
+			});
+			dispatch(
+				setFulfilledMessage('Account successfully created, please log-in')
+			);
+		} catch (exception) {
+			dispatch(
+				setErrorMessage(
+					'Username must be unique, password must be longer than 3 characters, and all fields must be filled in'
+				)
+			);
 		}
 	};
 };
