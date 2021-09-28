@@ -95,6 +95,7 @@ export const addComment = (id, comment) => {
 			type: 'COMMENT_BLOG',
 			data: updatedBlog,
 		});
+		dispatch(setFulfilledMessage('Comment added'));
 	};
 };
 
