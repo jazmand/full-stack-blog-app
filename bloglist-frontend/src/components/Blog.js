@@ -69,7 +69,7 @@ const Blog = ({blog}) => {
 		<div>
 			<h1 className='title'>{blog.title}</h1>
 			<div className='info'>
-				<Link href={blog.id} underline='hover' variant='h6'>
+				<Link href={`/#/blogs/${blog.id}`} underline='hover' variant='h6'>
 					{blog.url}
 				</Link>
 				<Typography variant='h5' className={classes.root}>
