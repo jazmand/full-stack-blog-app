@@ -17,6 +17,11 @@ const LoginForm = () => {
 		setPassword('');
 	};
 
+	const guestCredentials = () => {
+		setUsername('guest');
+		setPassword('guestpassword');
+	};
+
 	const useStyles = makeStyles((theme) => ({
 		root: {
 			'& > *': {
@@ -55,6 +60,15 @@ const LoginForm = () => {
 					color='primary'
 				>
 					Login
+				</Button>
+				<Button
+					id='guest-button'
+					onClick={guestCredentials}
+					type='submit'
+					variant='contained'
+					color='primary'
+				>
+					Proceed as Guest
 				</Button>
 			</form>
 		</div>
