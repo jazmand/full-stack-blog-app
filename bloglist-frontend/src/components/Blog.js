@@ -8,7 +8,7 @@ import {
 } from '../reducers/notificationReducer';
 import blogService from '../services/blogs';
 
-import {TextField, Button, Typography, Link} from '@material-ui/core';
+import {TextField, Button, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 const Blog = ({blog}) => {
@@ -69,9 +69,9 @@ const Blog = ({blog}) => {
 		<div>
 			<h1 className='title'>{blog.title}</h1>
 			<div className='info'>
-				<Link href={blog.url} underline='hover' variant='h6'>
+				<a href={blog.url} target='_blank' rel='noreferrer'>
 					{blog.url}
-				</Link>
+				</a>
 				<Typography variant='h5' className={classes.root}>
 					<span className='likes'>{blog.likes} likes</span>
 					<Button
