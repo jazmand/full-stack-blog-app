@@ -64,14 +64,21 @@ const Blog = ({blog}) => {
 		},
 	}));
 	const classes = useStyles();
-
+	const externalLink = `https://${blog.url}`;
 	return (
 		<div>
 			<h1 className='title'>{blog.title}</h1>
 			<div className='info'>
-				<a href={blog.url} target='_blank' rel='noreferrer'>
-					{blog.url}
-				</a>
+				<Typography underline='hover' variant='h6'>
+					<a
+						href={externalLink}
+						target='_blank'
+						rel='noreferrer'
+						style={{textDecoration: 'none'}}
+					>
+						{blog.url}
+					</a>
+				</Typography>
 				<Typography variant='h5' className={classes.root}>
 					<span className='likes'>{blog.likes} likes</span>
 					<Button
