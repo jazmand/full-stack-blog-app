@@ -16,4 +16,5 @@ Live link located [here](https://jazmand-blog-app.herokuapp.com/).
 
 ## Tech Used / Dependencies
 
-HTML, CSS, React, Redux, React Router, and Node.js were used to make this project
+HTML, CSS, React, Redux, React Router, and Node.js were used to make this project.
+Cypress and Jest used for testing.
