@@ -120,7 +120,7 @@ const App = () => {
 											.map((blog) => (
 												<StyledTableRow key={blog.id}>
 													<StyledTableCell component='th' scope='row'>
-														<Link to={`/#/blogs/${blog.id}`}>{blog.title}</Link>
+														<Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
 													</StyledTableCell>
 												</StyledTableRow>
 											))}

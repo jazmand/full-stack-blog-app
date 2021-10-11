@@ -23,7 +23,7 @@ const IndividualUser = ({blogs}) => {
 				{blogs.map((blog) => {
 					return (
 						<li key={blog.id} className={classes.root}>
-							<Link href={`/blogs/${blog.id}`} underline='hover' variant='h6'>
+							<Link href={`/#/blogs/${blog.id}`} underline='hover' variant='h6'>
 								{blog.title}
 							</Link>
 						</li>
