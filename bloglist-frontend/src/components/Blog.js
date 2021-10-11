@@ -27,9 +27,7 @@ const Blog = ({blog}) => {
 	const addLike = () => {
 		try {
 			dispatch(likeBlog(blog.id, blog.likes + 1));
-			dispatch(
-				setFulfilledMessage(`new like to blog ${blog.title} by ${blog.author}`)
-			);
+			dispatch(setFulfilledMessage('Like added'));
 		} catch (error) {
 			dispatch(setErrorMessage(error));
 		}
@@ -39,9 +37,7 @@ const Blog = ({blog}) => {
 		const result = window.confirm(`Remove ${blog.title} by ${blog.author}?`);
 		if (result) {
 			try {
-				dispatch(
-					setFulfilledMessage(`blog ${blog.title} by ${blog.author} delete`)
-				);
+				dispatch(setFulfilledMessage('Blog deleted'));
 				dispatch(deleteBlog(blog.id));
 				history.push('/');
 			} catch (error) {
