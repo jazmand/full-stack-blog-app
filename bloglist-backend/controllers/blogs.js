@@ -1,10 +1,6 @@
 const blogsRouter = require('express').Router();
 const Blog = require('../models/blog');
 
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 blogsRouter.get('/', async (request, response) => {
 	const blogs = await Blog.find({}).populate('user', {username: 1, name: 1});
 
