@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {likeBlog, deleteBlog, addComment} from '../reducers/blogReducer';
 import {
@@ -16,6 +16,7 @@ const Blog = ({blog}) => {
 
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const currentUserName = useSelector((state) => state.user.name);
 	const [allowRemove, setAllowRemove] = useState(false);
 
 	useEffect(() => {
@@ -48,7 +49,7 @@ const Blog = ({blog}) => {
 
 	const createComment = (e) => {
 		e.preventDefault();
-		dispatch(addComment(blog.id, e.target.comment.value));
+		dispatch(addComment(blog.id, currentUserName, e.target.comment.value));
 		e.target.comment.value = '';
 	};
 
@@ -75,13 +76,14 @@ const Blog = ({blog}) => {
 						{blog.url}
 					</a>
 				</Typography>
-				<Typography variant='h5' className={classes.root}>
+				<Typography variant='h6' className={classes.root}>
 					<span className='likes'>{blog.likes} likes</span>
 					<Button
 						className='like'
 						onClick={addLike}
 						variant='contained'
 						color='primary'
+						size='small'
 					>
 						Like
 					</Button>
@@ -94,7 +96,7 @@ const Blog = ({blog}) => {
 				)}
 			</div>
 			<div className='comments'>
-				<h3>Comments</h3>
+				<h2>Comments</h2>
 				<form onSubmit={createComment} className={classes.root}>
 					<TextField
 						label='Add Comment'
@@ -108,11 +110,22 @@ const Blog = ({blog}) => {
 						</Button>
 					</div>
 				</form>
-				<ul>
-					{blog.comments ? (
-						blog.comments.map((comment) => <li key={comment}>{comment}</li>)
+				<ul className='comments-section'>
+					{blog.comments.length > 0 ? (
+						blog.comments.map((commentData) =>
+							<li key={`${commentData.user}-${commentData.comment}`}>
+								<Typography variant='body1' style={{fontWeight: 'bold'}}>
+									{commentData.user}
+								</Typography>
+								<Typography variant='body2'>
+									{commentData.comment}
+								</Typography>
+							</li>
+						)
 					) : (
-						<div> No comments </div>
+						<Typography variant='body1'>
+							No Comments
+						</Typography>
 					)}
 				</ul>
 			</div>

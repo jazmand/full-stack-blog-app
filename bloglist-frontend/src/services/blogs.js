@@ -53,8 +53,8 @@ const getAllUsers = () => {
 	return request.then((response) => response.data);
 };
 
-const newComment = async (id, comment) => {
-	const request = await axios.post(`${baseUrl}/${id}/comments`, {comment});
+const newComment = async (id, user, comment) => {
+	const request = await axios.post(`${baseUrl}/${id}/comments`, {user: user, comment: comment});
 	return request.data;
 };
 

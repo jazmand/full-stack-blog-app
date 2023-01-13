@@ -14,3 +14,20 @@
 .message-error {
 	background: rgba(253, 68, 68, 0.678);
 }
+
+.comments-section{
+	padding: 0 1rem;
+	box-shadow: 11px -10px #3f51b5;
+    border: 1px solid #333;
+	margin: 2rem 1rem 0 1rem;
+}
+
+.comments-section li{
+	list-style: none;
+	padding: 0.5rem 0;
+}
+
+.comments-section li:not(:last-child) {
+	border-bottom: 1px solid #333;
+
+}
